@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 配置mybatis -->
+<configuration>
+	<!-- 配置别名 -->
+	<typeAliases>
+		<package name="com.dhr.shop.pojo"/>
+	</typeAliases>
+	
+	<!-- 配置pageHelper分页插件 -->
+	<plugins>
+    <!-- com.github.pagehelper为PageHelper类所在包名 -->
+	        <!--注意这里要写成PageInterceptor, 5.0之前的版本都是写PageHelper, 5.0之后要换成PageInterceptor-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--<property name="helperDialect" value="mysql" />-->
+            <property name="reasonable" value="true" />
+	    </plugin>
+	</plugins>
+</configuration>

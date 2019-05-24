@@ -1,0 +1,11 @@
+com\dhr\shop\dao\TbItemCatMapper.class
+com\dhr\shop\dao\TbContentCategoryMapper.class
+com\dhr\shop\dao\TbItemParamMapper.class
+com\dhr\shop\dao\TbContentMapper.class
+com\dhr\shop\dao\TbOrderItemMapper.class
+com\dhr\shop\dao\TbOrderMapper.class
+com\dhr\shop\dao\TbItemDescMapper.class
+com\dhr\shop\dao\TbItemParamItemMapper.class
+com\dhr\shop\dao\TbUserMapper.class
+com\dhr\shop\dao\TbOrderShippingMapper.class
+com\dhr\shop\dao\TbItemMapper.class

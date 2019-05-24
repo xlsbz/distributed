@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.taoshop</groupId>
+    <artifactId>taoshop-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>com.taoshop</groupId>
+  <artifactId>taoshop-manager</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>taoshop-manager-dao</module>
+  	<module>taoshop-manager-pojo</module>
+  	<module>taoshop-manager-interface</module>
+  	<module>taoshop-manager-service</module>
+  	<module>taoshop-items-web</module>
+  </modules>
+  <dependencies>
+  		<!-- 依赖taoshop-manage-pojo -->
+		  	<dependency>
+		  		<groupId>com.taoshop</groupId>
+		  		<artifactId>taoshop-common</artifactId>
+		  		<version>0.0.1-SNAPSHOT</version>
+		  	</dependency>
+  </dependencies>
+  
+  <!-- 安装tomcat启动插件 -->
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.tomcat.maven</groupId>
+  			<artifactId>tomcat7-maven-plugin</artifactId>
+  			<configuration>
+  				<port>8080</port>
+  				<path>/</path>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>

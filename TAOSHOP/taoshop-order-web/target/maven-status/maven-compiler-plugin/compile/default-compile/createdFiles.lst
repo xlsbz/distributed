@@ -1,0 +1,2 @@
+com\dhr\shop\order\web\OrderController.class
+com\dhr\shop\order\filter\PrivilegesInterceptor.class

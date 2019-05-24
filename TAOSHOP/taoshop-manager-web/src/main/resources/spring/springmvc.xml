@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo 
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 配置表现层的springmvc -->
+	
+	<!-- 扫描这个包下的所有controller注解 -->
+	<context:component-scan base-package="com.dhr.shop.web" />
+	
+	<!-- 配置处理器，适配器 -->
+	<mvc:annotation-driven />
+	<!-- 过滤静态资源 -->
+	<mvc:default-servlet-handler/>
+	
+	<!-- 视图解析前后缀 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<!-- 文件上传解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 配置文件上传参数 -->
+		<property name="defaultEncoding" value="UTF-8"/>
+		<property name="maxUploadSize" value="5242880"/>
+	</bean>
+	
+	<!-- 扫描配置文件 -->
+	<context:property-placeholder location="classpath:resource/resource.properties"/>
+	
+	<!-- 配置dubbo服务 -->
+	<dubbo:application name="taoshop-manager-web"/>
+	<!-- 使用广播地址 -->
+	<dubbo:registry address="192.168.25.128:2181" protocol="zookeeper"/>
+	<!-- 声明调用的服务 timeout是默认等待时间 3s-->
+    <dubbo:reference interface="com.dhr.shop.service.ItemService" id="itemService" timeout="200000"/>
+	<dubbo:reference interface="com.dhr.shop.service.ItemCatService" id="itemCatService" timeout="200000"/>
+	<dubbo:reference interface="com.dhr.shop.content.service.ContentCategoryService" id="contentCategoryService" timeout="200000"/>
+	<dubbo:reference interface="com.dhr.shop.content.service.ContentService" id="contentService" timeout="200000"/>
+	<dubbo:reference interface="com.dhr.shop.search.service.SearchItemService" id="searchItemService" timeout="200000"/>
+</beans>

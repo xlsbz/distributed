@@ -1,0 +1,4 @@
+com\dhr\shop\search\service\impl\SearchItemServiceImpl.class
+com\dhr\shop\search\dao\SearchItemDao.class
+com\dhr\shop\search\mapper\SearchItemMapper.class
+com\dhr\shop\search\listener\ItemChangeListener.class

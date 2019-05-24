@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 配置搜索的mapper -->
+<mapper namespace="com.dhr.shop.search.mapper.SearchItemMapper">
+	<select id="getAllItemList" resultType="searchItem">
+		SELECT 
+		  item.id,
+		  item.title,
+		  item.sell_point,
+		  item.price,
+		  item.image,
+		  itemc.name category_name,
+		  itemd.item_desc 
+		FROM
+		  tb_item item,
+		  tb_item_cat itemc,
+		  tb_item_desc itemd 
+		WHERE item.id = itemd.item_id 
+		  AND item.status = 1 
+		  AND item.cid = itemc.id 
+	</select>
+	
+	<select id="getSearchItemById" resultType="searchItem" parameterType="long">
+		SELECT 
+		  item.id,
+		  item.title,
+		  item.sell_point,
+		  item.price,
+		  item.image,
+		  itemc.name category_name,
+		  itemd.item_desc 
+		FROM
+		  tb_item item,
+		  tb_item_cat itemc,
+		  tb_item_desc itemd 
+		WHERE item.id = itemd.item_id 
+		  AND item.status = 1 
+		  AND item.cid = itemc.id 
+		  AND item.id = #{itemId}
+	</select>
+</mapper>
